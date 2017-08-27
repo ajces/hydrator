@@ -13,7 +13,7 @@ function hydrate(element) {
 export default function () {
   return {
     events: {
-      load(state, actions, root) {
+      load: function(state, actions, root) {
         return hydrate(root);
       }
     }

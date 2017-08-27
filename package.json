@@ -1,15 +1,27 @@
 {
   "name": "@ajces/hydrator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "hyperapp mixin for hydrating prerender and SSR",
-  "main": "index.js",
+  "main": "dist/hydrator.js",
+  "jsnext:main": "src/index.js",
+  "module": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run bundle && npm run minify",
+    "bundle": "rollup -i src/index.js -o dist/hydrator.js -f umd -mn Hydrator",
+    "minify": "uglifyjs dist/hydrator.js -o dist/hydrator.js --mangle --compress warnings=false --pure-funcs=Object.defineProperty -p relative --source-map dist/hydrator.js.map",
+    "prepublish": "npm run build",
+    "format": "prettier --write 'src/**/*.js'",
+    "release": "npm run build && npm test && git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags && npm publish"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ajces/hydrator.git"
   },
+  "files": [
+    "src",
+    "dist"
+  ],
   "keywords": [
     "hyperapp",
     "hydration"
@@ -19,5 +31,15 @@
   "bugs": {
     "url": "https://github.com/ajces/hydrator/issues"
   },
-  "homepage": "https://github.com/ajces/hydrator#readme"
+  "homepage": "https://github.com/ajces/hydrator#readme",
+  "babel": {
+    "presets": "es2015"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "jest": "^20.0.4",
+    "prettier": "^1.5.3",
+    "rollup": "^0.49.0",
+    "uglify-js": "^2.7.5"
+  }
 }
