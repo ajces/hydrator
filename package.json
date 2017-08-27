@@ -1,0 +1,23 @@
+{
+  "name": "@ajces/hydrator",
+  "version": "1.0.0",
+  "description": "hyperapp mixin for hydrating prerender and SSR",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ajces/hydrator.git"
+  },
+  "keywords": [
+    "hyperapp",
+    "hydration"
+  ],
+  "author": "Andy Johnson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ajces/hydrator/issues"
+  },
+  "homepage": "https://github.com/ajces/hydrator#readme"
+}
